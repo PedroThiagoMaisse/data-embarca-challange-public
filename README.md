@@ -5,7 +5,7 @@ Bem vindo a minha solução para o [desafio](https://github.com/ArcaSolucoes/dat
 ## A ideia de passo-a-passo
 
 A ideia é eu montar o código em 6 (+1) etapas:
-1. -Montar o read-me e uma arquitetura básica, além de preparar funções para testar localmente-
+1. ~Montar o read-me e uma arquitetura básica, além de preparar funções para testar localmente~
 2. Acertar as credenciais, conseguir importar o arquivo (direto pra dentro do código) e jogar ele pra dentro do teste e transformar em lista de objetos
 3. A partir da lista de objetos, montar um CSV e jogar ele pra uma pasta temp
 4. Criar services para baixar/subir os arquivos pra dentro do bucket
