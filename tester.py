@@ -11,7 +11,8 @@ def main():
 
     for item in results:
         if not item["success"]:
-            print('FALHA: \n' + item)
+            print('FALHA:')
+            print(item)
             return False
         else:
             print(item["response"])
