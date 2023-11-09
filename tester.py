@@ -1,8 +1,10 @@
 import services.test as services
 import utils.test as utils
 
+
+
 def main():
-    print('Começando testes\n')
+    print('Começando os testes\n')
 
     results = [
         services.main(),

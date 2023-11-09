@@ -1,5 +1,5 @@
 import json
-separator = ";"
+separator = ","
 
 def main(oldDict):
     entries = []
@@ -17,9 +17,10 @@ def main(oldDict):
     for item in oldDict:
         result += '\n'
         for key in entries:
-            if item[key]:
-                result += json.dumps(item[key]) + ";"
+            itemEntries = item.keys()
+            if key in itemEntries:
+                result += json.dumps(item[key]) + separator
             else:
-                result += ";"
+                result += separator
 
     return result
