@@ -14,6 +14,6 @@ def postBucketData(fileName, data):
     
     # Check if the upload was successful
     if response['ResponseMetadata']['HTTPStatusCode'] == 200:
-        print("File uploaded successfully!")
+        return {'success': True, 'data': response}
     else:
-        print("Failed to upload file.") 
+        return {'success': False, 'data': response} 

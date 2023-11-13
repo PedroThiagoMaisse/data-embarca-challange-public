@@ -13,7 +13,6 @@ provider:
   stage: dev
 
 
-
 functions:
   lambda-1:
     name: embarca-challenge-lambda-1
@@ -21,3 +20,31 @@ functions:
   lambda-2:
     name: embarca-challenge-lambda-2
     handler: handler.hello_2
+
+stepFunctions:
+  stateMachines:
+    embarca-challenge:
+      name: embarca-challenge
+      definition:
+        Comment: A description of my state machine
+        StartAt: Lambda - Handler 1
+        States:
+          Lambda - Handler 1:
+            FunctionName: embarca-challenge-lambda-1
+            Type: Task
+            Resource: arn:aws:states:::lambda:embarca-challenge-lambda-1
+            OutputPath: "$.Payload"
+            Parameters:
+              Payload.$: "$"
+            Next: Lambda - Handler 2
+          Lambda - Handler 2:
+            FunctionName: embarca-challenge-lambda-2
+            Type: Task
+            Resource: arn:aws:states:::lambda:embarca-challenge-lambda-2
+            OutputPath: "$.Payload"
+            Parameters:
+              Payload.$: "$"
+            End: true
+
+plugins:
+  - serverless-step-functions

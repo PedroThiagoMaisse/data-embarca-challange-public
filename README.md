@@ -11,7 +11,8 @@ A ideia é eu montar o código em 6 (+1) etapas:
 4. ~Criar services para baixar/subir os arquivos pra dentro do bucket~
 5. Garantir o funcionamento do sistema dentro da aws
 6. Montar o fluxo p/ git-actions (e criar branchs no código)
-7. Preparar um método de testes (para cada services e as lógicas de transformação de forma segregada), e automatizar ele no git-actions
+7. ~Preparar um método de testes (para cada services e as lógicas de transformação de forma segregada)~, e automatizar ele no git-actions
+   - Os testes estão muito quebrados para meu gosto, talvez ainda refaça eles.
 
 --
 # Descritivo do Desafio

@@ -4,8 +4,11 @@ import json
 def hello_1(event, context):
     body = {
         "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
+        "input": event,
+        "context": context
     }
+
+    console.log(body)
 
     response = {
         "statusCode": 200,
@@ -25,8 +28,11 @@ def hello_1(event, context):
 def hello_2(event, context):
     body = {
         "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
+        "input": event,
+        "context": context
     }
+
+    console.log(body)
 
     response = {
         "statusCode": 200,

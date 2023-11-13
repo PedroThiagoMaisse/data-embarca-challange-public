@@ -1,7 +1,5 @@
-import services.test as services
-import utils.test as utils
-
-
+import tests.services_test as services
+import tests.utils_test as utils
 
 def main():
     print('Começando os testes\n')
