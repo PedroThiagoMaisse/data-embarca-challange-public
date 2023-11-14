@@ -29,6 +29,7 @@ jobs:
       id: cpr
       uses: peter-evans/create-pull-request@v5
       with:
+        base: dev
         token: ${{ secrets.PAT }}
         commit-message: Update report
         committer: GitHub <noreply@github.com>
