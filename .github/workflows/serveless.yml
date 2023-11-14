@@ -16,15 +16,12 @@ jobs:
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i serverless -g
     - name: serverless deploy
-      uses: serverless/github-action@v3.2
+      uses: serverless/github-action@master
       with:
-        args: -c "serverless plugin install --name serverless-step-functions && serverless plugin install --name serverless-dotenv-plugin && serverless deploy"
+        args: deploy
       env:
+        # SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
+        # or if using AWS credentials directly
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
