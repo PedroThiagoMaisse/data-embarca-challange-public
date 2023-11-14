@@ -12,7 +12,7 @@ A ideia é eu montar o código em 6 (+3) etapas:
 5. ~Garantir o funcionamento do sistema dentro da aws~
 6. ~Montar o fluxo p/ git-actions (e criar branchs no código)~
 7. ~Preparar um método de testes~, e automatizar ele no git-actions
-8. Separar de 2 para 3 lambdas
+8. Separar de 2 para 3 lambdas e mudar o nome das functions e handlers
 9. Não sobreescrever arquivos antigos
 
 ### Teste
@@ -27,7 +27,7 @@ Roda o código dentro da máquina executando cada passa que é feito na step-fun
 Inicia a execução da step function e retorna o resultado dela no console.
 
 ### Deploy
-Ele é feito automático a cada push na master, porém também é possível executar ele manualmente usando de:
+Ele é feito automático a cada push na master, porém também é possível executar ele manualmente usando:
 
 > serverless deploy
 

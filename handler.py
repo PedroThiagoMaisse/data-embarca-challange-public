@@ -49,7 +49,8 @@ def hello_2(event, context):
 
         body = {
             "message": "The creation of the file was executed successfully!",
-            "outputLength": previousData['outputLength']
+            "outputLength": previousData['outputLength'],
+            "filePath": os.environ['BUCKET_NAME'] + '/' + os.environ['OUTPUT_FILE_PATH'] 
         }
 
         response = {
