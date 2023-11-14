@@ -1,4 +1,4 @@
-def plainifyData(list):
+def plainifyDataList(list):
     result = []
     for item in list:
         x = plainifyDict(item, '')

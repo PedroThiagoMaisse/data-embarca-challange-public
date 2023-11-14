@@ -18,12 +18,9 @@ jobs:
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
     
-    - name: Installing one plugin
+    - name: Installing serverless plugins
       run: npx serverless plugin install --name serverless-step-functions &&  npx serverless plugin install --name serverless-dotenv-plugin
-
-    - name: list archives
-      run: ls -a
-      
+-
     - name: Serverless deploy
       run: npx serverless deploy
       env:

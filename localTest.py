@@ -17,22 +17,5 @@ def main():
     except Exception as e:
         logging.error(traceback.format_exc())
         return False
-    # print('Começando os testes\n')
-
-    # results = [
-    #     services.main(),
-    #     utils.main(),
-    # ]
-
-    # for item in results:
-    #     if not item["success"]:
-    #         print('FALHA:')
-    #         print(item)
-    #         return False
-    #     else:
-    #         print(item["response"])
-
-    # print('\nTodos testes bem sucedidos!')
-    # return True
 
 main()

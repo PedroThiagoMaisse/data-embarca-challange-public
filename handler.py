@@ -3,7 +3,7 @@ from services.getBucketObject import getBucketObject
 from services.postBucketObject import postBucketData
 from utils.dictToCsvString import dictToCsvString
 from utils.jsonToDict import jsonToDict
-from utils.plainify import plainifyData
+from utils.plainify import plainifyDataList
 from utils.filterKeys import filterKeys
 import subprocess
 import traceback
@@ -14,7 +14,7 @@ def hello_1(event, context):
     try:
         bucketData = getBucketObject(event['Payload'])
         baseJson = jsonToDict(bucketData)
-        plainifiedJson = plainifyData(baseJson['hits'])
+        plainifiedJson = plainifyDataList(baseJson['hits'])
         
         listWithAlteredKeys = filterKeys(plainifiedJson)
 

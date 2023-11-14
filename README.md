@@ -4,19 +4,53 @@ Bem vindo a minha solução para o [desafio](https://github.com/ArcaSolucoes/dat
 
 ## A ideia de passo-a-passo
 
-A ideia é eu montar o código em 6 (+1) etapas:
+A ideia é eu montar o código em 6 (+3) etapas:
 1. ~Montar o read-me e uma arquitetura básica, além de preparar funções para testar localmente~
 2. ~Acertar as credenciais, conseguir importar o arquivo (direto pra dentro do código) e jogar ele pra dentro do teste e transformar em lista de objetos~
 3. ~A partir da lista de objetos, montar um CSV~
 4. ~Criar services para baixar/subir os arquivos pra dentro do bucket~
 5. ~Garantir o funcionamento do sistema dentro da aws~
-6. Montar o fluxo p/ git-actions (e criar branchs no código)
-7. ~Preparar um método de testes (para cada services e as lógicas de transformação de forma segregada)~, e automatizar ele no git-actions
-   - Os testes estão muito quebrados para meu gosto, talvez ainda refaça eles.
+6. ~Montar o fluxo p/ git-actions (e criar branchs no código)~
+7. ~Preparar um método de testes~, e automatizar ele no git-actions
+8. Separar de 2 para 3 lambdas
+9. Não sobreescrever arquivos antigos
 
---
+### Teste
+É possível realizar o teste de dois jeitos:
+
+> py localTest.py
+
+Roda o código dentro da máquina executando cada passa que é feito na step-function, é necessário instalar o python-dotenv na primeira execução
+
+> py liveTest.py
+
+Inicia a execução da step function e retorna o resultado dela no console.
+
+### Deploy
+Ele é feito automático a cada push na master, porém também é possível executar ele manualmente usando de:
+
+> serverless deploy
+
+### Variáveis de ambiente
+Há 4 variáveis de ambiente necessárias para rodar o código:
+
+|Nome             |Descrição                    |
+|-----------------|-----------------------------|
+|ACCESS_KEY_ID    | A Access Key da conta AWS   |
+|SECRET_ACCESS_KEY| O Secret da conta AWS       |
+|BUCKET_NAME      | O nome do bucket            |
+|OUTPUT_FILE_PATH | O nome do arquivo de output |
+
+e 3 variáveis de ambiente que rodam na Action
+
+|Nome                 |Descrição                                                              |
+|---------------------|-----------------------------------------------------------------------|
+|AWS_ACCESS_KEY_ID    | A Access Key da conta AWS                                             |
+|AWS_ECRET_ACCESS_KEY | O Secret da conta AWS                                                 |
+|ENVS_FILE            | O conteúdo do .env.example preenchido com as variáveis a serem usadas |
+
 # Descritivo do Desafio
-
+<details>
 # Desafio AWS Step Functions com Serverless Framework e S3
 
 Bem-vindo(a) ao desafio de orquestração de microserviços usando AWS Step Functions, Lambdas e S3. Aqui, você usará o Serverless Framework e Python para criar e gerenciar seus recursos AWS.
@@ -94,4 +128,4 @@ Para a saída gerada pela segunda lambda, esperamos um arquivo CSV que cumpra as
 ## Bônus de Avaliação
 
 A implementação de um pipeline de integração contínua e entrega contínua (CI/CD) utilizando o GitHub Actions **não é obrigatória**, mas será considerada um extra positivo na avaliação. Se decidir implementar este aspecto, assegure-se de documentar o fluxo do pipeline, as ações tomadas em cada etapa e qualquer outro detalhe relevante que possa facilitar a compreensão e revisão do seu trabalho.
-
+</details>
