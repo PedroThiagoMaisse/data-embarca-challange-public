@@ -11,27 +11,32 @@ A ideia é eu montar o código em 6 (+3) etapas:
 4. ~Criar services para baixar/subir os arquivos pra dentro do bucket~
 5. ~Garantir o funcionamento do sistema dentro da aws~
 6. ~Montar o fluxo p/ git-actions (e criar branchs no código)~
-7. ~Preparar um método de testes~, e automatizar ele no git-actions
-8. Separar de 2 para 3 lambdas e mudar o nome das functions e handlers
-9. Não sobreescrever arquivos antigos
+7. ~Preparar um método de testes~, e automatizar ele no git-actions para travar o deploy se ele não dê sucesso
+8. Separar as 2 lambdas para 3, fazendo uma separação de responsabilidade mais clara
+9. Criar uma pasta de dump para manter os arquivos antigos salvos
 
-### Teste
+
+# Testando
 É possível realizar o teste de dois jeitos:
 
 > py localTest.py
 
-Roda o código dentro da máquina executando cada passa que é feito na step-function, é necessário instalar o python-dotenv na primeira execução
+Inicia a execução na *máquina local* passo por passo como a step-function, é necessário instalar o python-dotenv na primeira execução
+
+
 
 > py liveTest.py
 
-Inicia a execução da step function e retorna o resultado dela no console.
+Inicia a execução da step function *na aws* e retorna o resultado dela no console.
 
-### Deploy
-Ele é feito automático a cada push na master, porém também é possível executar ele manualmente usando:
+
+
+# Deploy
+É feito automáticamente a cada push na master, porém também é possível executar ele manualmente usando:
 
 > serverless deploy
 
-### Variáveis de ambiente
+# Variáveis de ambiente
 Há 4 variáveis de ambiente necessárias para rodar o código:
 
 |Nome             |Descrição                    |
@@ -41,12 +46,13 @@ Há 4 variáveis de ambiente necessárias para rodar o código:
 |BUCKET_NAME      | O nome do bucket            |
 |OUTPUT_FILE_PATH | O nome do arquivo de output |
 
-e 3 variáveis de ambiente que rodam na Action
+
+e 3 variáveis de ambiente (Secrets) para a Action
 
 |Nome                 |Descrição                                                              |
 |---------------------|-----------------------------------------------------------------------|
 |AWS_ACCESS_KEY_ID    | A Access Key da conta AWS                                             |
-|AWS_ECRET_ACCESS_KEY | O Secret da conta AWS                                                 |
+|AWS_SECRET_ACCESS_KEY| O Secret da conta AWS                                                 |
 |ENVS_FILE            | O conteúdo do .env.example preenchido com as variáveis a serem usadas |
 
 # Descritivo do Desafio
