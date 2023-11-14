@@ -21,10 +21,9 @@ A ideia é eu montar o código em 6 (+3) etapas:
 
 > py localTest.py
 
-Inicia a execução na *máquina local* passo por passo como a step-function, é necessário instalar o python-dotenv na primeira execução
+Inicia a execução na *máquina local* passo por passo como a step-function, é necessário instalar o python-dotenv na primeira execução;
 
-
-
+e:
 > py liveTest.py
 
 Inicia a execução da step function *na aws* e retorna o resultado dela no console.
@@ -32,7 +31,7 @@ Inicia a execução da step function *na aws* e retorna o resultado dela no cons
 
 
 # Deploy
-É feito automáticamente a cada push na master, porém também é possível executar ele manualmente usando:
+É feito automáticamente a cada push na master que passa o teste, porém também é possível executar ele manualmente usando:
 
 > serverless deploy
 
