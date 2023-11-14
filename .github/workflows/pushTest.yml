@@ -1,6 +1,9 @@
-name: Running Test
+name: Test to auto PR
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build-linux:

@@ -1,9 +1,9 @@
-name: Deploy Master Branch
+name: Deploy from PRD Branch
 
 on:
   push:
     branches:
-      - master
+      - prd
 
 jobs:
   deploy:
