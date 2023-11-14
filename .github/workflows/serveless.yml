@@ -16,13 +16,16 @@ jobs:
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
     - uses: actions/checkout@v3
-    - name: seeing archive
-      run: ls -a
+    
+    - name: Installing one plugin
+      run: serverless plugin install --name serverless-step-functions 
     - uses: actions/checkout@v3
+    
     - name: serverless install
       uses: serverless/github-action@v3.2
       with:
-        args: -c "serverless plugin install --name serverless-step-functions && serverless plugin install --name serverless-dotenv-plugin"
+        args: -c "serverless plugin install --name serverless-dotenv-plugin"
+        
     - name: serverless deploy
       uses: serverless/github-action@v3.2
       with:
