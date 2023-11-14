@@ -1,4 +1,4 @@
-name: Deploy from Master Branch to PRD
+name: Deploy from PRD Branch to AWS
  
 on:
   push:

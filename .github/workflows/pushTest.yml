@@ -1,4 +1,4 @@
-name: Test then auto PR
+name: Test localTest.py execution then create PR
 
 on:
   push:
