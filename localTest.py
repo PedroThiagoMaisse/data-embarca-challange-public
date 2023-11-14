@@ -9,7 +9,6 @@ load_dotenv()
 
 def main():
     try:
-        return True
         event = {}
         event['lambda_handler_1_result'] = {'responseBody': (handler.hello_1({"Payload": "input/inp_2023-09-20T14-29-57-ec.json"}, {''}))['body']}
         event['lambda_handler_2_result'] = {'responseBody': (handler.hello_2(event, {''}))['body']}
@@ -18,6 +17,6 @@ def main():
 
     except Exception as e:
         logging.error(traceback.format_exc())
-        return False
+        sys.exit(1)
 
 main()
