@@ -1,5 +1,5 @@
-name: Deploy from PRD Branch
-
+name: Deploy from Master Branch to PRD
+ 
 on:
   push:
     branches:
