@@ -13,6 +13,14 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+    - name: list archives
+      run: ls -a
+    
+    - uses: actions/checkout@v3
+
+    - name: list archives
+      run: ls -a
+      
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
 
