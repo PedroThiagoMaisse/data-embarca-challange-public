@@ -1,5 +1,3 @@
-
-
 service: embarca-challenge
 
 frameworkVersion: '3'
@@ -21,30 +19,34 @@ functions:
     name: embarca-challenge-lambda-2
     handler: handler.hello_2
 
+
+
 stepFunctions:
   stateMachines:
     embarca-challenge:
-      name: embarca-challenge
+      name: embarca-challenge-step-function
       definition:
         Comment: A description of my state machine
-        StartAt: Lambda - Handler 1
+        StartAt: lambda_handler_1
         States:
-          Lambda - Handler 1:
-            FunctionName: embarca-challenge-lambda-1
+          lambda_handler_1:
             Type: Task
-            Resource: arn:aws:states:::lambda:embarca-challenge-lambda-1
-            OutputPath: "$.Payload"
-            Parameters:
-              Payload.$: "$"
-            Next: Lambda - Handler 2
-          Lambda - Handler 2:
-            FunctionName: embarca-challenge-lambda-2
+            Resource:
+              Fn::GetAtt: ["lambda-1", "Arn"]
+            ResultSelector:
+              responseBody.$: "$.body"
+            ResultPath: "$.lambda_handler_1_result"
+            Next: lambda_handler_2
+          lambda_handler_2:
             Type: Task
-            Resource: arn:aws:states:::lambda:embarca-challenge-lambda-2
-            OutputPath: "$.Payload"
-            Parameters:
-              Payload.$: "$"
+            Resource:
+              Fn::GetAtt: ["lambda-2", "Arn"]
+            ResultSelector:
+              responseBody.$: "$.body"
+            ResultPath: "$.lambda_handler_2_result"
             End: true
+
 
 plugins:
   - serverless-step-functions
+  - serverless-dotenv-plugin

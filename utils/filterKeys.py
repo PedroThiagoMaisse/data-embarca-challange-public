@@ -19,7 +19,10 @@ def filterKeys (array):
     for item in array:
         newItem = {}
         for entrie in entries:
-            newItem[entrie['new']] = item[entrie['current']]
+            if item[entrie['current']] != 'null' and item[entrie['current']] != None:
+                newItem[entrie['new']] = item[entrie['current']]
+            else:
+                newItem[entrie['new']] = ''
         returnList.append(newItem)
 
     return returnList    

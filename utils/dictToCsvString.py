@@ -1,7 +1,7 @@
 import json
 separator = ","
 
-def main(oldDict):
+def dictToCsvString(oldDict):
     entries = []
 
     for item in oldDict:
@@ -11,15 +11,15 @@ def main(oldDict):
 
     result = ""
 
-    for item in entries:
-        result += item + separator
+    for i, item in enumerate(entries):
+        result += item + (separator if i + 1 < len(entries) else '')
 
     for item in oldDict:
         result += '\n'
-        for key in entries:
+        for i, key in enumerate(entries):
             itemEntries = item.keys()
             if key in itemEntries:
-                result += json.dumps(item[key]) + separator
+                result += str(item[key]) + (separator if i + 1 < len(entries) else '')
             else:
                 result += separator
 
