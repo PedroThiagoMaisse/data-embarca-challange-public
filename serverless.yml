@@ -14,10 +14,15 @@ provider:
 functions:
   lambda-1:
     name: embarca-challenge-lambda-1
-    handler: handler.hello_1
+    handler: handler.getBucketJson
+
   lambda-2:
     name: embarca-challenge-lambda-2
-    handler: handler.hello_2
+    handler: handler.treatData
+  
+  lambda-3:
+    name: embarca-challenge-lambda-3
+    handler: handler.postDataAsCsv
 
 
 
@@ -37,6 +42,7 @@ stepFunctions:
               responseBody.$: "$.body"
             ResultPath: "$.lambda_handler_1_result"
             Next: lambda_handler_2
+
           lambda_handler_2:
             Type: Task
             Resource:
@@ -44,6 +50,15 @@ stepFunctions:
             ResultSelector:
               responseBody.$: "$.body"
             ResultPath: "$.lambda_handler_2_result"
+            Next: lambda_handler_3
+
+          lambda_handler_3:
+            Type: Task
+            Resource:
+              Fn::GetAtt: ["lambda-3", "Arn"]
+            ResultSelector:
+              responseBody.$: "$.body"
+            ResultPath: "$.lambda_handler_3_result"
             End: true
 
 

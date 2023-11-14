@@ -10,9 +10,13 @@ load_dotenv()
 def main():
     try:
         event = {}
-        event['lambda_handler_1_result'] = {'responseBody': (handler.hello_1({"Payload": "input/inp_2023-09-20T14-29-57-ec.json"}, {''}))['body']}
-        event['lambda_handler_2_result'] = {'responseBody': (handler.hello_2(event, {''}))['body']}
-        print(event['lambda_handler_2_result']['responseBody']['outputLength'], 'Lines created\nAt:', os.environ['OUTPUT_FILE_PATH'])
+        event['lambda_handler_1_result'] = {'responseBody': (handler.getBucketJson({"Payload": "input/inp_2023-09-20T14-29-57-ec.json"}, {''}))['body']}
+        print(event['lambda_handler_1_result']['responseBody']['message'])
+        event['lambda_handler_2_result'] = {'responseBody': (handler.treatData(event, {''}))['body']}
+        print(event['lambda_handler_2_result']['responseBody']['message'])
+        event['lambda_handler_3_result'] = {'responseBody': (handler.postDataAsCsv(event, {''}))['body']}
+        print(event['lambda_handler_3_result']['responseBody']['message'])
+
         return True
 
     except Exception as e:
