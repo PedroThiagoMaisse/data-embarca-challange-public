@@ -7,6 +7,7 @@ from utils.filterKeys import filterKeys
 import traceback
 import logging
 import os
+import datetime
 
 def getBucketJson(event, context):
     try:
@@ -39,20 +40,10 @@ def treatData(event, context):
         
         listWithAlteredKeys = filterKeys(plainifiedJson)
 
-        # previousData = event['lambda_handler_1_result']['responseBody']
-        # generatedCSV = dictToCsvString(previousData['output'])
-
-        # r = postBucketData(os.environ['OUTPUT_FILE_PATH'], generatedCSV)
-
         body = {
             "message": "The manipulation was executed successfully!",
             "output": listWithAlteredKeys
         }
-        # body = {
-        #     "message": "The creation of the file was executed successfully!",
-        #     "outputLength": previousData['outputLength'],
-        #     "filePath": os.environ['BUCKET_NAME'] + '/' + os.environ['OUTPUT_FILE_PATH'] 
-        # }
 
         response = {
             "statusCode": 200,
@@ -73,7 +64,8 @@ def postDataAsCsv(event, context):
         previousData = event['lambda_handler_2_result']['responseBody']['output']
         generatedCSV = dictToCsvString(previousData)
 
-        r = postBucketData(os.environ['OUTPUT_FILE_PATH'], generatedCSV)
+        postBucketData(os.environ['OUTPUT_FILE_PATH'], generatedCSV)
+        postBucketData('bin/' + datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y") + '.csv', generatedCSV)
 
         body = {
             "message": "The creation of the file was executed successfully!",

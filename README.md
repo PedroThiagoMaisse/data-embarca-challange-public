@@ -13,7 +13,7 @@ A ideia é eu montar o código em 6 (+3) etapas:
 6. ~Montar o fluxo p/ git-actions (e criar branchs no código)~
 7. ~Preparar um método de testes, e automatizar ele no git-actions para travar o deploy se ele não dê sucesso~
 8. ~Separar as 2 lambdas para 3, fazendo uma separação de responsabilidade mais clara~
-9. Criar uma pasta de dump para manter os arquivos antigos salvos
+9. ~Criar uma pasta de dump para manter os arquivos antigos salvos~
 
 
 # Testando
