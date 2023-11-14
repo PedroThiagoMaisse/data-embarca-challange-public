@@ -20,7 +20,7 @@ jobs:
     
     - name: Installing serverless plugins
       run: npx serverless plugin install --name serverless-step-functions &&  npx serverless plugin install --name serverless-dotenv-plugin
--
+
     - name: Serverless deploy
       run: npx serverless deploy
       env:
