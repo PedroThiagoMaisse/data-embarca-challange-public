@@ -13,21 +13,10 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-    - name: list archives
-      run: ls -a
-    
     - uses: actions/checkout@v3
 
-    - name: list archives
-      run: ls -a
-      
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
-
-    - name: list archives
-      run: ls -a
-
-    - uses: actions/checkout@v3
     
     - name: Installing one plugin
       run: npx serverless plugin install --name serverless-step-functions &&  npx serverless plugin install --name serverless-dotenv-plugin
