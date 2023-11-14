@@ -16,6 +16,9 @@ jobs:
     - name: setting envs in vm
       run: echo "${{secrets.ENVS_FILE }}" > .env
     - uses: actions/checkout@v3
+    - name: seeing archive
+      run: ls -a
+    - uses: actions/checkout@v3
     - name: serverless install
       uses: serverless/github-action@v3.2
       with:
