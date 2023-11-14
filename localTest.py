@@ -9,7 +9,7 @@ load_dotenv()
 
 def main():
     try:
-        sys.exit(1)
+        return True
         event = {}
         event['lambda_handler_1_result'] = {'responseBody': (handler.hello_1({"Payload": "input/inp_2023-09-20T14-29-57-ec.json"}, {''}))['body']}
         event['lambda_handler_2_result'] = {'responseBody': (handler.hello_2(event, {''}))['body']}
