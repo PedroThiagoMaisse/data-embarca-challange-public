@@ -19,7 +19,7 @@ jobs:
     
     - name: Installing one plugin
       run: serverless plugin install --name serverless-step-functions 
-    - uses: actions/checkout@v3
+    - uses: serverless/github-action@v3.2
     
     - name: serverless install
       uses: serverless/github-action@v3.2
